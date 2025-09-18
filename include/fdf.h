@@ -6,9 +6,14 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/09/16 14:56:41 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/09/18 14:03:25 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42.h"
 #include "libft.h"
+
+# define WIDTH 720
+# define HEIGHT 720
+
+void	get_coordinates(int fd);
