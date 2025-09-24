@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/09/24 11:31:27 by nde-sant         ###   ########.fr       */
+/*   Created: 2025/09/24 10:19:26 by nde-sant          #+#    #+#             */
+/*   Updated: 2025/09/24 10:24:20 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include "MLX42.h"
 #include "libft.h"
 
-# define WIDTH 720
-# define HEIGHT 720
-# define DEFAULT_COLOR 0xFFFFFFFF
+size_t	ft_arrlen(char **array)
+{
+	size_t	i;
 
-void	free_char_array(char **array);
-size_t	ft_arrlen(char **array);
-t_list	*get_map(int fd);
+	i = 0;
+	while (array[i])
+		i++;
+	return (i);
+}
+
+void	free_char_array(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+		free(array[i++]);
+	free(array);
+}
