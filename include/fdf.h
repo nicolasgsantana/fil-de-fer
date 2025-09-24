@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/09/24 14:37:18 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/09/24 15:18:58 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 #include "MLX42.h"
 #include "libft.h"
 #include <math.h>
+#include <stdio.h>
 
 # define WIDTH 720
 # define HEIGHT 720
 # define DEFAULT_COLOR 0xFFFFFFFF
+# define SPACE 10
 
 void	free_char_array(char **array);
 size_t	ft_arrlen(char **array);
 t_list	*get_map(int fd);
 void	print_map(t_list *map);
 int	ft_htoi(char *hex);
+void	draw_points(mlx_image_t *img, t_list *map);
