@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:15:26 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/09/24 11:33:31 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:58:25 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ int	*get_point_values(char *row_point)
 	i = 0;
 	while (i < 2)
 	{
-		if (point[i])
+		if (point[i] && i == 0)
 			point_values[i] = ft_atoi(point[i]);
+		else if (point[i] && i == 1)
+			point_values[i] = ft_atoi(point[i]); // TODO: update to htoi
 		else
 			point_values[i] = DEFAULT_COLOR;
 		i++;
@@ -68,6 +70,7 @@ t_list	*get_map(int map_fd)
 	size_t	rowlen;
 	t_list	*map;
 
+	map = NULL;
 	current_row = get_row_array(map_fd);
 	rowlen = ft_arrlen(current_row);
 	while (current_row)

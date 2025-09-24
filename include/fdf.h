@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/09/24 11:31:27 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:16:39 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,4 @@
 void	free_char_array(char **array);
 size_t	ft_arrlen(char **array);
 t_list	*get_map(int fd);
+void	print_map(t_list *map);
