@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:15:26 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/09/24 12:58:25 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/09/24 14:38:09 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	*get_point_values(char *row_point)
 		if (point[i] && i == 0)
 			point_values[i] = ft_atoi(point[i]);
 		else if (point[i] && i == 1)
-			point_values[i] = ft_atoi(point[i]); // TODO: update to htoi
+			point_values[i] = ft_htoi(point[i]);
 		else
 			point_values[i] = DEFAULT_COLOR;
 		i++;
