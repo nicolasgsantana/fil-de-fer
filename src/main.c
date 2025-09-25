@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:40:59 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/09/24 16:28:20 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/09/25 15:53:38 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ static void ft_error(void)
 	exit(EXIT_FAILURE);
 }
 
-static void ft_hook(void* param)
-{
-	const mlx_t* mlx = param;
+// static void ft_hook(void* param)
+// {
+// 	const mlx_t* mlx = param;
 
-	printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
-}
+// 	printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
+// }
 
 int32_t	main(int argc, char **argv)
 {
@@ -38,11 +38,11 @@ int32_t	main(int argc, char **argv)
 		mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "Fil de Fer", false);
 		if (!mlx)
 			ft_error();
-		mlx_image_t* img = mlx_new_image(mlx, 10000, 10000);
-		if (!img || (mlx_image_to_window(mlx, img, 200, 200) < 0))
+		mlx_image_t* img = mlx_new_image(mlx, WIDTH, HEIGHT);
+		if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
 			ft_error();
+		// mlx_loop_hook(mlx, ft_hook, mlx);
 		draw_points(img, map);
-		mlx_loop_hook(mlx, ft_hook, mlx);
 		mlx_loop(mlx);
 		mlx_terminate(mlx);
 	}
