@@ -47,4 +47,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re $(LIBFT) $(MLX42)
+.PHONY: all clean fclean re
