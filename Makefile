@@ -1,6 +1,6 @@
 NAME = fdf
 SRC_DIR = src
-INC_DIR = include
+INC_DIR = inc
 OBJ_DIR = obj
 
 LIBFT_DIR= lib/libft
