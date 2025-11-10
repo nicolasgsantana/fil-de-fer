@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:40:59 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/10 14:26:08 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/10 15:39:09 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,12 @@
 
 int32_t	main(int argc, char **argv)
 {
-	int		fd;
 	t_point	*points;
 
 	if (argc == 2)
 	{
 		validate_file(argv[1]);
-		(void)points;
-		(void)fd;
-	// 	fd = open(argv[1], O_RDONLY);
-	// 	map = get_map(fd);
-	// 	close(fd);
+		points = parse(argv[1]);
 	// 	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "Fil de Fer", false);
 	// 	if (!mlx)
 	// 		ft_error();
@@ -49,6 +44,7 @@ int32_t	main(int argc, char **argv)
 	// 	draw_points(img, map);
 	// 	mlx_loop(mlx);
 	// 	mlx_terminate(mlx);
+		(void)points;
 	}
 	return (EXIT_SUCCESS);
 }
