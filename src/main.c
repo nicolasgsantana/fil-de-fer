@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:40:59 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/10 12:45:59 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/10 14:26:08 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@
 int32_t	main(int argc, char **argv)
 {
 	int		fd;
-	t_list	*map;
+	t_point	*points;
 
 	if (argc == 2)
 	{
 		validate_file(argv[1]);
-		(void)map;
+		(void)points;
 		(void)fd;
 	// 	fd = open(argv[1], O_RDONLY);
 	// 	map = get_map(fd);
