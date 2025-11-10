@@ -13,7 +13,7 @@ CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I$(INC_DIR) -I$(LIBFT_DIR)/include -I$(MLX42_DIR)/include/MLX42
 LIBS = $(LIBFT) $(MLX42) -ldl -lglfw -lm -pthread
 
-SRC = src/main.c src/map_parser.c src/map_utils.c src/ft_htoi.c src/draw.c src/validation.c src/error.c
+SRC = src/main.c src/parser.c src/utils.c src/ft_htoi.c src/draw.c src/validation.c src/error.c
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 HEADER = inc/fdf.h inc/error.h inc/validation.h inc/utils.h
 
