@@ -6,15 +6,18 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/06 13:38:05 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/10 10:27:57 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include "MLX42.h"
-#include "libft.h"
-#include <math.h>
-#include <stdio.h>
+#ifndef FDF_H
+# define FDF_H
+
+# include <fcntl.h>
+# include "MLX42.h"
+# include "libft.h"
+# include <math.h>
+# include <stdio.h>
 
 # define WIDTH 720
 # define HEIGHT 720
@@ -35,3 +38,5 @@ t_list	*get_map(int fd);
 void	print_map(t_list *map);
 int	ft_htoi(char *hex);
 void	draw_points(mlx_image_t *img, t_list *map);
+
+#endif
