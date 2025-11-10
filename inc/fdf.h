@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/10 10:27:57 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/10 11:01:15 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_point
 	unsigned int	color;
 }					t_point;
 
+void	validate_file(char *file);
 void	free_char_array(char **array);
 size_t	ft_arrlen(char **array);
 t_list	*get_map(int fd);
