@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:29:38 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/10 13:10:36 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/11 15:40:10 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 # include "utils.h"
 # include <fcntl.h>
 
-void	validate_file(char *file);
+void	check_extension(char *file);
 
 #endif

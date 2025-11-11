@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:40:59 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/11 14:37:20 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/11 15:48:46 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int32_t	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		validate_file(argv[1]);
 		points = parse(argv[1]);
 		print_map(points, argv[1]);
 	// 	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "Fil de Fer", false);

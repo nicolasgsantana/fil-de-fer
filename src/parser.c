@@ -6,11 +6,12 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:15:26 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/11 15:34:36 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/11 15:48:22 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "validation.h"
 
 static int	point_count(char *file)
 {
@@ -90,10 +91,18 @@ t_point	*parse(char *file)
 	int		fd;
 	t_point	*points;
 
+	check_extension(file);
+	fd = open(file, O_RDONLY);
+	if (fd <= 0)
+	{
+		perror("Error opening file");
+		close(fd);
+		exit (EXIT_FAILURE);
+	}
 	points = malloc(sizeof(t_point) * point_count(file));
 	if (!points)
 		return (NULL);
-	fd = open(file, O_RDONLY);
 	get_points(points, fd);
+	close(fd);
 	return (points);
 }
