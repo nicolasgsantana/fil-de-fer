@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:15:26 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/11 09:38:31 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/11 10:42:59 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,37 +41,44 @@ static void	set_point(t_point *point, int x, int y, int z, unsigned int color)
 	point->color = color;
 }
 
-static void	get_points(t_point *points, int fd)
+static void	parse_line(t_point **tmp, char *line, int y)
 {
 	int		i;
-	int		y;
-	char	**point;
 	char	**row;
+	char	**point;
+
+	row = ft_split(line, ' ');
+	i = 0;
+	while (row[i])
+	{
+		point = ft_split(row[i], ',');
+		if (point[1])
+			set_point(*tmp, i, y, ft_atoi(point[0]), ft_htoi(point[1]));
+		else
+			set_point(*tmp, i, y, ft_atoi(point[0]), UINT_MAX);
+		free_char_array(point);
+		(*tmp)++;
+		i++;
+	}
+	free_char_array(row);
+}
+
+
+static void	get_points(t_point *points, int fd)
+{
+	int		y;
 	char	*line;
 	t_point	*tmp;
 
 	tmp = points;
-	line = get_next_line(fd);
 	y = 0;
+	line = get_next_line(fd);
 	while (line)
 	{
-		row = ft_split(line, ' ');
-		i = 0;
-		while(row[i])
-		{
-			point = ft_split(row[i], ',');
-			if (point[1])
-				set_point(tmp, i, y, ft_atoi(point[0]), ft_htoi(point[1]));
-			else
-				set_point(tmp, i, y, ft_atoi(point[0]), UINT_MAX);
-			free_char_array(point);
-			tmp++;
-			i++;
-		}
-		y++;
-		free_char_array(row);
+		parse_line(&tmp, line, y);
 		free(line);
 		line = get_next_line(fd);
+		y++;
 	}
 }
 
