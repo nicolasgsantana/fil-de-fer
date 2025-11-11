@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 13:04:42 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/09/24 14:42:01 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/11 09:27:09 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	get_decimal(char hex_char)
 	int		i;
 
 	hex_chars = "0123456789ABCDEF";
+	i = 0;
 	while (hex_chars[i])
 	{
 		if (hex_chars[i] == ft_toupper(hex_char))
