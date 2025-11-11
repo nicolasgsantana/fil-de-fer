@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/10 15:37:26 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/11 09:40:14 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "libft.h"
 # include <math.h>
 # include <stdio.h>
+# include <limits.h>
 
 # define WIDTH 720
 # define HEIGHT 720
