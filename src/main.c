@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:40:59 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/10 15:39:09 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/11 10:10:35 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int32_t	main(int argc, char **argv)
 	// 	draw_points(img, map);
 	// 	mlx_loop(mlx);
 	// 	mlx_terminate(mlx);
-		(void)points;
+		free(points);
 	}
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:15:26 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/10 15:36:59 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/11 09:38:31 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,10 @@ static void	get_points(t_point *points, int fd)
 			if (point[1])
 				set_point(tmp, i, y, ft_atoi(point[0]), ft_htoi(point[1]));
 			else
-				set_point(tmp, i, y, ft_atoi(point[0]), DEFAULT_COLOR);
-			tmp++;
+				set_point(tmp, i, y, ft_atoi(point[0]), UINT_MAX);
 			free_char_array(point);
+			tmp++;
+			i++;
 		}
 		y++;
 		free_char_array(row);
