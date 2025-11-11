@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:15:26 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/11 10:42:59 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/11 15:34:36 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ static int	point_count(char *file)
 	return (count);
 }
 
-static void	set_point(t_point *point, int x, int y, int z, unsigned int color)
+static void	set_point(t_point *point, int coordinates[3], unsigned int color)
 {
-	point->x = x;
-	point->y = y;
-	point->z = z;
+	point->x = coordinates[0];
+	point->y = coordinates[1];
+	point->z = coordinates[2];
 	point->color = color;
 }
 
@@ -46,23 +46,26 @@ static void	parse_line(t_point **tmp, char *line, int y)
 	int		i;
 	char	**row;
 	char	**point;
+	int		coordinates[3];
 
 	row = ft_split(line, ' ');
 	i = 0;
 	while (row[i])
 	{
 		point = ft_split(row[i], ',');
+		coordinates[0] = i;
+		coordinates[1] = y;
+		coordinates[2] = ft_atoi(point[0]);
 		if (point[1])
-			set_point(*tmp, i, y, ft_atoi(point[0]), ft_htoi(point[1]));
+			set_point(*tmp, coordinates, ft_htoui(point[1]));
 		else
-			set_point(*tmp, i, y, ft_atoi(point[0]), UINT_MAX);
+			set_point(*tmp, coordinates, UINT_MAX);
 		free_char_array(point);
 		(*tmp)++;
 		i++;
 	}
 	free_char_array(row);
 }
-
 
 static void	get_points(t_point *points, int fd)
 {

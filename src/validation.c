@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:10:30 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/10 13:01:00 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/11 15:27:45 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	check_extension(char *file)
 {
 	int	len;
 	int	pos;
-	
+
 	len = ft_strlen(file);
 	pos = len - 4;
 	if (ft_strncmp(".fdf", &file[pos], 5))
@@ -36,7 +36,7 @@ static int	check_rect_map(int fd)
 	errors = 0;
 	while (line)
 	{
-		if(len != ft_arrlen(points))
+		if (len != ft_arrlen(points))
 			errors++;
 		len = ft_arrlen(points);
 		free(line);
