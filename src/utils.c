@@ -6,11 +6,11 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 10:19:26 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/10 14:25:24 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/12 10:28:02 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "utils.h"
 
 size_t	ft_arrlen(char **array)
 {
@@ -30,4 +30,25 @@ void	free_char_array(char **array)
 	while (array[i])
 		free(array[i++]);
 	free(array);
+}
+
+int	point_count(char *file)
+{
+	int		fd;
+	char	*line;
+	char	**row;
+	int		count;
+
+	fd = open(file, O_RDONLY);
+	line = get_next_line(fd);
+	count = 0;
+	while (line)
+	{
+		row = ft_split(line, ' ');
+		count += (int)ft_arrlen(row);
+		free_char_array(row);
+		free(line);
+		line = get_next_line(fd);
+	}
+	return (count);
 }

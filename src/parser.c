@@ -6,33 +6,11 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:15:26 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/11 15:48:22 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/12 10:27:20 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "validation.h"
-
-static int	point_count(char *file)
-{
-	int		fd;
-	char	*line;
-	char	**row;
-	int		count;
-
-	fd = open(file, O_RDONLY);
-	line = get_next_line(fd);
-	count = 0;
-	while (line)
-	{
-		row = ft_split(line, ' ');
-		count += (int)ft_arrlen(row);
-		free_char_array(row);
-		free(line);
-		line = get_next_line(fd);
-	}
-	return (count);
-}
 
 static void	set_point(t_point *point, int coordinates[3], unsigned int color)
 {
