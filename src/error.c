@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:19:34 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/12 10:35:36 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/12 10:52:41 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	extension_error(void)
 	exit(EXIT_FAILURE);
 }
 
-void	mlx_error(void)
+void	graphic_error(void)
 {
-	ft_putstr_fd(mlx_strerror(mlx_errno), STDERR_FILENO);
+	ft_putstr_fd((char *)mlx_strerror(mlx_errno), STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }

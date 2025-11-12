@@ -6,11 +6,12 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:15:26 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/12 10:27:20 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/12 10:51:13 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "validation.h"
 
 static void	set_point(t_point *point, int coordinates[3], unsigned int color)
 {
