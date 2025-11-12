@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:19:34 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/11 15:42:45 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/12 10:35:36 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,11 @@
 void	extension_error(void)
 {
 	ft_putstr_fd("File name must contain .fdf extension\n", STDERR_FILENO);
+	exit(EXIT_FAILURE);
+}
+
+void	mlx_error(void)
+{
+	ft_putstr_fd(mlx_strerror(mlx_errno), STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
