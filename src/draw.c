@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:55:56 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/12 19:35:13 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/12 20:21:03 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,32 @@ void	draw_x_lines(mlx_image_t *img, t_point *points, int size)
 	}
 }
 
+static int	get_line_len(t_point *ref_point, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size && ref_point[i].y == ref_point[i + 1].y)
+		i++;
+	return (i);
+}
+
+void	draw_y_lines(mlx_image_t *img, t_point *points, int size)
+{
+	int	i;
+	int	line_len;
+	
+	i = 0;
+	line_len = get_line_len(points, size);
+	while (i < size)
+	{
+		if (&points[i + line_len])
+			plot_line(img, points[i], points[i + line_len]);
+		i++;
+	}
+
+}
+
 void	draw_points(mlx_image_t *img, t_point *points, int size)
 {
 	int	vector[3];
@@ -61,4 +87,5 @@ void	draw_points(mlx_image_t *img, t_point *points, int size)
 	vector[2] = 2;
 	scale_transform(points, vector, size);
 	draw_x_lines(img, points, size);
+	draw_y_lines(img, points, size);
 }
