@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:55:56 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/12 16:19:34 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/12 19:35:13 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,27 @@ void	plot_line(mlx_image_t *img, t_point p0, t_point p1)
 	}
 }
 
-void	draw_points(mlx_image_t *img, t_point *points, int size)
+void	draw_x_lines(mlx_image_t *img, t_point *points, int size)
 {
 	int	i;
-
+	
 	i = 0;
 	while (i < size)
 	{
-		mlx_put_pixel(img, points[i].x * 30, points[i].y * 30, points[i].color);
+		if (i + 1 < size)
+			if (points[i + 1].x)
+				plot_line(img, points[i], points[i + 1]);
 		i++;
 	}
+}
+
+void	draw_points(mlx_image_t *img, t_point *points, int size)
+{
+	int	vector[3];
+
+	vector[0] = 3;
+	vector[1] = 3;
+	vector[2] = 2;
+	scale_transform(points, vector, size);
+	draw_x_lines(img, points, size);
 }
