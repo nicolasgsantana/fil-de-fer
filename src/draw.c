@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:55:56 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/12 20:21:03 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/14 17:12:33 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,23 @@
 
 void	plot_line(mlx_image_t *img, t_point p0, t_point p1)
 {
-	int	dx;
-	int	dy;
-	int	d;
-	int	y;
-	int	x;
+	int		dist[2];
+	double	coord[2];
+	int		steps;
+	int		i;
 
-	dx = p1.x - p0.x;
-	dy = p1.y - p0.y;
-	d = 2 * dy - dx;
-	y = p0.y;
-	x = p0.x;
-	while (x <= p1.x)
+	dist[0] = p1.x - p0.x;
+	dist[1] = p1.y - p0.y;
+	steps = imax(abs(dist[0]), abs(dist[1]));
+	coord[0] = p0.x;
+	coord[1] = p0.y;
+	i = 0;
+	while (i < steps)
 	{
-		mlx_put_pixel(img, x, y, 0xFFFFFFFF);
-		if (d > 0)
-		{
-			y++;
-			d = d - 2 * dx;
-		}
-		d = d + 2 * dy;
-		x++;
+		mlx_put_pixel(img, floor(coord[0]), floor(coord[1]), UINT_MAX);
+		coord[0] += dist[0] / steps;
+		coord[1] += dist[1] / steps;
+		i++;
 	}
 }
 
@@ -59,20 +55,19 @@ static int	get_line_len(t_point *ref_point, int size)
 	i = 0;
 	while (i < size && ref_point[i].y == ref_point[i + 1].y)
 		i++;
-	return (i);
+	return (i + 1);
 }
 
 void	draw_y_lines(mlx_image_t *img, t_point *points, int size)
 {
 	int	i;
-	int	line_len;
+	int	width;
 	
 	i = 0;
-	line_len = get_line_len(points, size);
-	while (i < size)
+	width = get_line_len(points, size);
+	while (i + width < size)
 	{
-		if (&points[i + line_len])
-			plot_line(img, points[i], points[i + line_len]);
+		plot_line(img, points[i], points[i + width]);
 		i++;
 	}
 
@@ -82,8 +77,8 @@ void	draw_points(mlx_image_t *img, t_point *points, int size)
 {
 	int	vector[3];
 
-	vector[0] = 3;
-	vector[1] = 3;
+	vector[0] = 30;
+	vector[1] = 30;
 	vector[2] = 2;
 	scale_transform(points, vector, size);
 	draw_x_lines(img, points, size);

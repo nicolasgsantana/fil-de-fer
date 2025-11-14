@@ -6,11 +6,18 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 10:19:26 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/12 10:28:02 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/14 16:43:13 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+
+int	imax(int x, int y)
+{
+	if (x > y)
+		return (x);
+	return (y);
+}
 
 size_t	ft_arrlen(char **array)
 {
