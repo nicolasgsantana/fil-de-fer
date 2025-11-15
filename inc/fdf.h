@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/14 16:43:32 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/15 13:29:38 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ typedef struct s_point
 	unsigned int	color;
 }					t_point;
 
+typedef struct s_vector
+{
+	int	x;
+	int	y;
+	int	z;
+}		t_vector;
+
+void			set_vector(t_vector *vector, int x, int y, int z);
 unsigned int	ft_htoui(char *hex);
 t_point			*parse(char *file);
 void			draw_points(mlx_image_t *img, t_point *points, int size);

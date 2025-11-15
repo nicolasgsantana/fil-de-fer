@@ -6,36 +6,34 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:15:26 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/12 10:51:13 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/15 13:35:15 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "validation.h"
 
-static void	set_point(t_point *point, int coordinates[3], unsigned int color)
+static void	set_point(t_point *point, t_vector vector, unsigned int color)
 {
-	point->x = coordinates[0];
-	point->y = coordinates[1];
-	point->z = coordinates[2];
+	point->x = vector.x;
+	point->y = vector.y;
+	point->z = vector.z;
 	point->color = color;
 }
 
 static void	parse_line(t_point **tmp, char *line, int y)
 {
-	int		i;
-	char	**row;
-	char	**point;
-	int		coordinates[3];
+	int			i;
+	char		**row;
+	char		**point;
+	t_vector	coordinates;
 
 	row = ft_split(line, ' ');
 	i = 0;
 	while (row[i])
 	{
 		point = ft_split(row[i], ',');
-		coordinates[0] = i;
-		coordinates[1] = y;
-		coordinates[2] = ft_atoi(point[0]);
+		set_vector(&coordinates, i, y, ft_atoi(point[0]));
 		if (point[1])
 			set_point(*tmp, coordinates, ft_htoui(point[1]));
 		else
