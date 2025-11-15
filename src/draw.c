@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:55:56 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/14 17:12:33 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/15 13:11:54 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	plot_line(mlx_image_t *img, t_point p0, t_point p1)
 	i = 0;
 	while (i < steps)
 	{
-		mlx_put_pixel(img, floor(coord[0]), floor(coord[1]), UINT_MAX);
+		mlx_put_pixel(img, round(coord[0]), round(coord[1]), UINT_MAX);
 		coord[0] += dist[0] / steps;
 		coord[1] += dist[1] / steps;
 		i++;
@@ -37,7 +37,7 @@ void	plot_line(mlx_image_t *img, t_point p0, t_point p1)
 void	draw_x_lines(mlx_image_t *img, t_point *points, int size)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < size)
 	{
@@ -62,7 +62,7 @@ void	draw_y_lines(mlx_image_t *img, t_point *points, int size)
 {
 	int	i;
 	int	width;
-	
+
 	i = 0;
 	width = get_line_len(points, size);
 	while (i + width < size)
@@ -70,7 +70,6 @@ void	draw_y_lines(mlx_image_t *img, t_point *points, int size)
 		plot_line(img, points[i], points[i + width]);
 		i++;
 	}
-
 }
 
 void	draw_points(mlx_image_t *img, t_point *points, int size)
