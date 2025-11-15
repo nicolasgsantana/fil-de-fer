@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/15 13:29:38 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/15 14:37:05 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void			draw_points(mlx_image_t *img, t_point *points, int size);
 void 			plot_line(mlx_image_t *img, t_point p0, t_point p1);
 void			scale_transform(t_point *points, int vector[3], int size);
 int				imax(int x, int y);
+int				get_row_size(char *file);
 
 // DEBUG ONLY REMOVE LATER
 void	print_map(t_point *points, char *file);
