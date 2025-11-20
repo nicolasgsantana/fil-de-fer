@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:55:56 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/15 13:11:54 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/20 15:23:10 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,14 @@ void	draw_y_lines(mlx_image_t *img, t_point *points, int size)
 }
 
 void	draw_points(mlx_image_t *img, t_point *points, int size)
-{
-	int	vector[3];
+{	
+	t_vector	scalar;
 
-	vector[0] = 30;
-	vector[1] = 30;
-	vector[2] = 2;
-	scale_transform(points, vector, size);
+	set_vector(&scalar, 10, 10 , 10);
+	rotate_z_axis(points, 45, size);
+	rotate_x_axis(points, atan(sqrt(2)), size);
+	scale_transform(points, scalar, size);
+	translate_2d(points, size, 200, 200);
 	draw_x_lines(img, points, size);
 	draw_y_lines(img, points, size);
 }

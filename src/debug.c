@@ -6,21 +6,19 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 14:29:27 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/12 10:36:00 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/19 15:42:30 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	print_map(t_point *points, char *file)
+void	print_map(t_point *points, int size)
 {
 	t_point	*tmp;
 	int		last_y;
-	int		size;
 
 	tmp = points;
 	last_y = tmp->y;
-	size = point_count(file);
 	while (size)
 	{
 		if (last_y < tmp->y)
