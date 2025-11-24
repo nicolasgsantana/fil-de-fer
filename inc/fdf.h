@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/20 13:33:51 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/24 10:49:46 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,16 @@ typedef struct s_vector
 	int	z;
 }		t_vector;
 
+typedef struct s_grid
+{
+	int	cols;
+	int	rows;
+	int	size;
+}		t_grid;
+
 void			set_vector(t_vector *vector, int x, int y, int z);
 unsigned int	ft_htoui(char *hex);
-t_point			*parse(char *file);
+void			parse(char *file, t_point **points, t_grid *grid);
 void			draw_points(mlx_image_t *img, t_point *points, int size);
 void 			plot_line(mlx_image_t *img, t_point p0, t_point p1);
 void			scale_transform(t_point *points, t_vector scalar, int size);
@@ -49,7 +56,9 @@ void			rotate_x_axis(t_point *pts, double angle, int size);
 void			rotate_y_axis(t_point *pts, double angle, int size);
 void			rotate_z_axis(t_point *pts, double angle, int size);
 int				imax(int x, int y);
-int				get_row_size(char *file);
+int				get_col_count(char *file);
+void			set_grid(t_grid *grid, int cols, int rows);
+int				get_row_count(char *file);
 
 // DEBUG ONLY REMOVE LATER
 void			print_map(t_point *points, int size);

@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 10:19:26 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/15 16:16:52 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/24 10:15:07 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	free_char_array(char **array)
 	free(array);
 }
 
-int	get_row_size(char *file)
+int	get_col_count(char *file)
 {
 	int		fd;
 	char	*line;
@@ -55,7 +55,7 @@ int	get_row_size(char *file)
 	return (size);
 }
 
-int	get_column_size(char *file)
+int	get_row_count(char *file)
 {
 	int		fd;
 	char	*line;
@@ -79,7 +79,7 @@ int	point_count(char *file)
 	int	row_size;
 	int	column_size;
 
-	row_size = get_column_size(file);
-	column_size = get_row_size(file);
+	row_size = get_row_count(file);
+	column_size = get_col_count(file);
 	return (row_size * column_size);
 }

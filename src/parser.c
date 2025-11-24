@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:15:26 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/15 16:15:16 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/24 10:49:16 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ static void	set_point(t_point *point, t_vector vector, unsigned int color)
 	point->color = color;
 }
 
-static void	complete_line(t_point **tmp, int x, int y, int line_size)
+static void	complete_line(t_point **tmp, int x, int y, int col_count)
 {
 	t_vector	coordinates;	
 
-	while (x < line_size)
+	while (x < col_count)
 	{
 		set_vector(&coordinates, x, y, 0);
 		set_point(*tmp, coordinates, UINT_MAX);
@@ -34,7 +34,7 @@ static void	complete_line(t_point **tmp, int x, int y, int line_size)
 	}
 }
 
-static void	parse_line(t_point **tmp, char *line, int y, int line_size)
+static void	parse_line(t_point **tmp, char *line, int y, int col_count)
 {
 	int			i;
 	char		**row;
@@ -55,33 +55,31 @@ static void	parse_line(t_point **tmp, char *line, int y, int line_size)
 		(*tmp)++;
 		i++;
 	}
-	complete_line(tmp, i, y, line_size);
+	complete_line(tmp, i, y, col_count);
 	free_char_array(row);
 }
 
-static void	get_points(t_point *points, int fd, int line_size)
+static void	get_points(t_point **points, int fd, int col_count)
 {
 	int		y;
 	char	*line;
 	t_point	*tmp;
 
-	tmp = points;
+	tmp = *points;
 	y = 0;
 	line = get_next_line(fd);
 	while (line)
 	{
-		parse_line(&tmp, line, y, line_size);
+		parse_line(&tmp, line, y, col_count);
 		free(line);
 		line = get_next_line(fd);
 		y++;
 	}
 }
 
-t_point	*parse(char *file)
+void	parse(char *file, t_point **points, t_grid *grid)
 {
-	int		fd;
-	t_point	*points;
-	int		line_size;
+	int	fd;
 
 	check_extension(file);
 	fd = open(file, O_RDONLY);
@@ -91,11 +89,10 @@ t_point	*parse(char *file)
 		close(fd);
 		exit (EXIT_FAILURE);
 	}
-	points = malloc(sizeof(t_point) * point_count(file));
-	if (!points)
-		return (NULL);
-	line_size = get_row_size(file);
-	get_points(points, fd, line_size);
+	set_grid(grid, get_col_count(file), get_row_count(file));
+	*points = malloc(sizeof(t_point) * grid->size);
+	if (!(*points))
+		return ;
+	get_points(points, fd, grid->cols);
 	close(fd);
-	return (points);
 }

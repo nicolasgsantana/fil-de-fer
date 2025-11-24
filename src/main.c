@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:40:59 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/14 16:36:13 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/24 10:49:24 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ static void ft_hook(void* param)
 int32_t	main(int argc, char **argv)
 {
 	t_point		*points;
-	int			size;
+	t_grid		grid;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 
 	if (argc == 2)
 	{
-		points = parse(argv[1]);
-		size = point_count(argv[1]);
+		parse(argv[1], &points, &grid);
 		mlx = mlx_init(WIDTH, HEIGHT, "Fil de Fer", false);
 		if (!mlx)
 			graphic_error();
@@ -39,7 +38,7 @@ int32_t	main(int argc, char **argv)
 		if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
 			graphic_error();
 		mlx_loop_hook(mlx, ft_hook, mlx);
-		draw_points(img, points, size);
+		draw_points(img, points, grid.size);
 		mlx_loop(mlx);
 		mlx_terminate(mlx);
 		free(points);
