@@ -48,9 +48,17 @@ static void	draw_lines(mlx_image_t *img, t_point *p, t_grid grid)
 		{
 			i = r * grid.cols + c;
 			if (c + 1 < grid.cols)
+			{
 				plot_line(img, p[i], p[i + 1]);
+				ft_printf("draw horizontal connected p1.x: %d p1.y: %d with p2.x: %d p2.y %d\n", p[i].x, p[i].y, p[i+1].x, p[i+1].y);
+			}
+				
 			if (r + 1 < grid.rows)
+			{
 				plot_line(img, p[i], p[i + grid.cols]);
+				ft_printf("draw vertical connected p1.x: %d p1.y: %d with p2.x: %d p2.y %d\n", p[i].x, p[i].y, p[i+grid.cols].x, p[i+grid.cols].y);
+			}
+				
 			c++;
 		}
 		r++;
@@ -66,6 +74,5 @@ void	draw_map(mlx_image_t *img, t_point *points, t_grid grid)
 	rotate_x_axis(points, 35.264389683, grid.size);
 	scale_transform(points, scalar, grid.size);
 	translate_2d(points, grid.size, 200, 200);
-	print_map(points, grid);
 	draw_lines(img, points, grid);
 }
