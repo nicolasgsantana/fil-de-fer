@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:55:56 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/20 15:23:10 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/24 11:20:11 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	plot_line(mlx_image_t *img, t_point p0, t_point p1)
 	coord[0] = p0.x;
 	coord[1] = p0.y;
 	i = 0;
-	while (i < steps)
+	while (i <= steps)
 	{
 		mlx_put_pixel(img, round(coord[0]), round(coord[1]), UINT_MAX);
 		coord[0] += dist[0] / steps;
@@ -34,53 +34,37 @@ void	plot_line(mlx_image_t *img, t_point p0, t_point p1)
 	}
 }
 
-void	draw_x_lines(mlx_image_t *img, t_point *points, int size)
+static void	draw_lines(mlx_image_t *img, t_point *p, t_grid grid)
 {
+	int	r;
+	int	c;
 	int	i;
 
-	i = 0;
-	while (i < size)
+	r = 0;
+	while (r < grid.rows)
 	{
-		if (i + 1 < size)
-			if (points[i + 1].x)
-				plot_line(img, points[i], points[i + 1]);
-		i++;
+		c = 0;
+		while (c < grid.cols)
+		{
+			i = r * grid.cols + c;
+			if (c + 1 < grid.cols)
+				plot_line(img, p[i], p[i + 1]);
+			if (r + 1 < grid.rows)
+				plot_line(img, p[i], p[i + grid.cols]);
+			c++;
+		}
+		r++;
 	}
 }
 
-static int	get_line_len(t_point *ref_point, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size && ref_point[i].y == ref_point[i + 1].y)
-		i++;
-	return (i + 1);
-}
-
-void	draw_y_lines(mlx_image_t *img, t_point *points, int size)
-{
-	int	i;
-	int	width;
-
-	i = 0;
-	width = get_line_len(points, size);
-	while (i + width < size)
-	{
-		plot_line(img, points[i], points[i + width]);
-		i++;
-	}
-}
-
-void	draw_points(mlx_image_t *img, t_point *points, int size)
+void	draw(mlx_image_t *img, t_point *points, t_grid grid)
 {	
 	t_vector	scalar;
 
-	set_vector(&scalar, 10, 10 , 10);
-	rotate_z_axis(points, 45, size);
-	rotate_x_axis(points, atan(sqrt(2)), size);
-	scale_transform(points, scalar, size);
-	translate_2d(points, size, 200, 200);
-	draw_x_lines(img, points, size);
-	draw_y_lines(img, points, size);
+	set_vector(&scalar, 20, 20 , 20);
+	rotate_z_axis(points, 45, grid.size);
+	rotate_x_axis(points, atan(sqrt(2)), grid.size);
+	scale_transform(points, scalar, grid.size);
+	translate_2d(points, grid.size, 200, 200);
+	draw_lines(img, points, grid);
 }

@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/24 10:49:46 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/24 11:07:51 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_grid
 void			set_vector(t_vector *vector, int x, int y, int z);
 unsigned int	ft_htoui(char *hex);
 void			parse(char *file, t_point **points, t_grid *grid);
-void			draw_points(mlx_image_t *img, t_point *points, int size);
+void			draw(mlx_image_t *img, t_point *points, t_grid grid);
 void 			plot_line(mlx_image_t *img, t_point p0, t_point p1);
 void			scale_transform(t_point *points, t_vector scalar, int size);
 void			translate_2d(t_point *points, int size, int dx, int dy);
