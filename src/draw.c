@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_map.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:55:56 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/24 11:20:11 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/24 12:56:26 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,15 @@ static void	draw_lines(mlx_image_t *img, t_point *p, t_grid grid)
 	}
 }
 
-void	draw(mlx_image_t *img, t_point *points, t_grid grid)
+void	draw_map(mlx_image_t *img, t_point *points, t_grid grid)
 {	
 	t_vector	scalar;
 
-	set_vector(&scalar, 20, 20 , 20);
+	set_vector(&scalar, 20, 20, 20);
 	rotate_z_axis(points, 45, grid.size);
-	rotate_x_axis(points, atan(sqrt(2)), grid.size);
+	rotate_x_axis(points, 35.264389683, grid.size);
 	scale_transform(points, scalar, grid.size);
 	translate_2d(points, grid.size, 200, 200);
+	print_map(points, grid);
 	draw_lines(img, points, grid);
 }

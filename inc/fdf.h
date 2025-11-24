@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/24 11:07:51 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/24 12:59:37 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ typedef struct s_point
 
 typedef struct s_vector
 {
-	int	x;
-	int	y;
-	int	z;
+	double	x;
+	double	y;
+	double	z;
 }		t_vector;
 
 typedef struct s_grid
@@ -45,10 +45,10 @@ typedef struct s_grid
 	int	size;
 }		t_grid;
 
-void			set_vector(t_vector *vector, int x, int y, int z);
+void			set_vector(t_vector *vector, double x, double y, double z);
 unsigned int	ft_htoui(char *hex);
 void			parse(char *file, t_point **points, t_grid *grid);
-void			draw(mlx_image_t *img, t_point *points, t_grid grid);
+void			draw_map(mlx_image_t *img, t_point *points, t_grid grid);
 void 			plot_line(mlx_image_t *img, t_point p0, t_point p1);
 void			scale_transform(t_point *points, t_vector scalar, int size);
 void			translate_2d(t_point *points, int size, int dx, int dy);
@@ -61,6 +61,6 @@ void			set_grid(t_grid *grid, int cols, int rows);
 int				get_row_count(char *file);
 
 // DEBUG ONLY REMOVE LATER
-void			print_map(t_point *points, int size);
+void	print_map(t_point *points, t_grid grid);
 
 #endif

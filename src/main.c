@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:40:59 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/24 11:08:00 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/24 12:59:37 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int32_t	main(int argc, char **argv)
 		if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
 			graphic_error();
 		mlx_loop_hook(mlx, ft_hook, mlx);
-		draw(img, points, grid);
+		draw_map(img, points, grid);
 		mlx_loop(mlx);
 		mlx_terminate(mlx);
 		free(points);
