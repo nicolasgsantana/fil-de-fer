@@ -61,10 +61,10 @@ void	draw_map(mlx_image_t *img, t_point *points, t_grid grid)
 {	
 	t_vector	scalar;
 
-	set_vector(&scalar, 20, 20, 20);
+	set_vector(&scalar, 20, 20, 3);
+	scale_transform(points, scalar, grid.size);
 	rotate_z_axis(points, 45, grid.size);
 	rotate_x_axis(points, 35.264389683, grid.size);
-	scale_transform(points, scalar, grid.size);
 	translate_2d(points, grid.size, 200, 200);
 	draw_lines(img, points, grid);
 }
