@@ -6,31 +6,28 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 14:29:27 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/24 12:32:40 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/25 09:37:23 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-void	print_map(t_point *points, t_grid grid)
+void print_map(t_point *points, t_grid grid)
 {
-	t_point	*tmp;
-	int	col;
+	int total = grid.size;
+	int cols  = grid.cols;
 
-	tmp = points;
-	col = 0;
-	while (grid.size)
+	for (int i = 0; i < total; i++)
 	{
-		if (col > grid.cols)
-		{
-			col = 0;
+		int row = i / cols;
+		int col = i % cols;
+
+		if (col == 0 && i != 0)
 			printf("\n");
-		}
-		printf("X:%10.2f  Y:%10.2f  Z:%10.2f | ", tmp->x, tmp->y, tmp->z);
-		//printf("color: %u | ", tmp->color);
-		grid.size--;
-		tmp++;
-		col++;
+
+		printf("[%2d,%2d]  X:%10.2f  Y:%10.2f  Z:%10.2f | ",
+				row, col, points[i].x, points[i].y, points[i].z);
 	}
+	printf("\n");
 }
