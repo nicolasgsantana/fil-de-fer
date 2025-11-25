@@ -28,8 +28,8 @@ void	plot_line(mlx_image_t *img, t_point p0, t_point p1)
 	while (i <= steps)
 	{
 		mlx_put_pixel(img, round(coord[0]), round(coord[1]), UINT_MAX);
-		coord[0] += dist[0] / steps;
-		coord[1] += dist[1] / steps;
+		coord[0] += (double)dist[0] / steps;
+		coord[1] += (double)dist[1] / steps;
 		i++;
 	}
 }
@@ -48,17 +48,9 @@ static void	draw_lines(mlx_image_t *img, t_point *p, t_grid grid)
 		{
 			i = r * grid.cols + c;
 			if (c + 1 < grid.cols)
-			{
 				plot_line(img, p[i], p[i + 1]);
-				ft_printf("draw horizontal connected p1.x: %d p1.y: %d with p2.x: %d p2.y %d\n", p[i].x, p[i].y, p[i+1].x, p[i+1].y);
-			}
-				
 			if (r + 1 < grid.rows)
-			{
 				plot_line(img, p[i], p[i + grid.cols]);
-				ft_printf("draw vertical connected p1.x: %d p1.y: %d with p2.x: %d p2.y %d\n", p[i].x, p[i].y, p[i+grid.cols].x, p[i+grid.cols].y);
-			}
-				
 			c++;
 		}
 		r++;
