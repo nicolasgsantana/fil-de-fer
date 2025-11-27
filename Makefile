@@ -15,8 +15,8 @@ LIBS = $(LIBFT) $(MLX42) -ldl -lglfw -lm -pthread
 
 SRC = src/main.c src/parser.c src/utils.c src/ft_htoui.c src/draw.c src/validation.c \
 src/error.c src/math_utils.c src/vector.c src/grid.c src/rotation.c src/scaling.c\
-src/translation.c src/bounds.c\
-src/debug.c
+src/translation.c src/bounds.c
+
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 HEADER = inc/fdf.h inc/error.h inc/validation.h inc/utils.h
 
