@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/27 12:26:02 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/27 13:12:35 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ typedef struct s_app
 	mlx_image_t	*img;
 	t_point		*points;
 	t_grid		grid;
-	int			initialized;
 }				t_app;
 
 
