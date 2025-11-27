@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 10:19:34 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/12 10:52:41 by nde-sant         ###   ########.fr       */
+/*   Created: 2025/11/15 13:25:44 by nde-sant          #+#    #+#             */
+/*   Updated: 2025/11/24 12:40:44 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
+#include "fdf.h"
 
-void	extension_error(void)
+void	set_vector(t_vector *vector, double x, double y, double z)
 {
-	ft_putstr_fd("File name must contain .fdf extension\n", STDERR_FILENO);
-	exit(EXIT_FAILURE);
-}
-
-void	graphic_error(void)
-{
-	ft_putstr_fd((char *)mlx_strerror(mlx_errno), STDERR_FILENO);
-	exit(EXIT_FAILURE);
+	vector->x = x;
+	vector->y = y;
+	vector->z = z;
 }

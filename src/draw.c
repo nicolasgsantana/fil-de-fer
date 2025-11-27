@@ -1,47 +1,66 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_map.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:55:56 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/09/25 16:09:05 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/24 12:56:26 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	calc_x(int x, int y)
+static void	plot_line(mlx_image_t *img, t_point p0, t_point p1)
 {
-	return ((x - y) * sqrt(3) / 2);
-}
+	int		dist[2];
+	double	coord[2];
+	int		steps;
+	int		i;
 
-int	calc_y(int x, int y, int z)
-{
-	return ((x + y) / 2 - z);
-}
-
-void	draw_points(mlx_image_t *img, t_list *map)
-{
-	t_list	*node;
-	int		**row;
-	int		x;
-	int		y;
-
-	node = map;
-	y = 0;
-	while (node)
+	dist[0] = p1.x - p0.x;
+	dist[1] = p1.y - p0.y;
+	steps = imax(abs(dist[0]), abs(dist[1]));
+	coord[0] = p0.x;
+	coord[1] = p0.y;
+	i = 0;
+	while (i <= steps)
 	{
-		row = (int **)node->content;
-		x = 0;
-		while (row[x])
-		{
-			mlx_put_pixel(img, calc_x(x, y) + 200, calc_y(x, y, row[x][0]) + 200, row[x][1]);
-			ft_printf("X: %d, Y: %d\n", calc_x(x, y), calc_y(x, y, row[x][0]));
-			x++;
-		}
-		y++;
-		node = node->next;
+		mlx_put_pixel(img, round(coord[0]), round(coord[1]), UINT_MAX);
+		coord[0] += (double)dist[0] / steps;
+		coord[1] += (double)dist[1] / steps;
+		i++;
 	}
+}
+
+static void	draw_lines(mlx_image_t *img, t_point *p, t_grid grid)
+{
+	int	r;
+	int	c;
+	int	i;
+
+	r = 0;
+	while (r < grid.rows)
+	{
+		c = 0;
+		while (c < grid.cols)
+		{
+			i = r * grid.cols + c;
+			if (c + 1 < grid.cols)
+				plot_line(img, p[i], p[i + 1]);
+			if (r + 1 < grid.rows)
+				plot_line(img, p[i], p[i + grid.cols]);
+			c++;
+		}
+		r++;
+	}
+}
+
+void	draw_map(mlx_image_t *img, t_point *points, t_grid grid)
+{	
+	set_initial_scale(points, grid.size);
+	rotate_isometric(points, grid.size);
+	translate_to_center(points, grid.size);
+	draw_lines(img, points, grid);
 }

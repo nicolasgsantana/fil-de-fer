@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
+/*   translation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/11 14:29:27 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/25 09:37:23 by nde-sant         ###   ########.fr       */
+/*   Created: 2025/11/27 15:50:34 by nde-sant          #+#    #+#             */
+/*   Updated: 2025/11/27 16:35:59 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
-void print_map(t_point *points, t_grid grid)
+void	translate_2d(t_point *points, int size, int dx, int dy)
 {
-	int total = grid.size;
-	int cols  = grid.cols;
+	int	i;
 
-	for (int i = 0; i < total; i++)
+	i = 0;
+	while (i < size)
 	{
-		int row = i / cols;
-		int col = i % cols;
-
-		if (col == 0 && i != 0)
-			printf("\n");
-
-		printf("[%2d,%2d]  X:%10.2f  Y:%10.2f  Z:%10.2f | ",
-				row, col, points[i].x, points[i].y, points[i].z);
+		points[i].x += dx;
+		points[i].y += dy;
+		i++;
 	}
-	printf("\n");
+}
+
+void	translate_to_center(t_point *points, int size)
+{
+	t_vector	min;
+	t_vector	max;
+	int			dx;
+	int			dy;
+
+	get_bounds(points, &min, &max, size);
+	dx = (WIDTH / 2.0) - ((max.x + min.x) / 2.0);
+	dy = (HEIGHT / 2.0) - ((max.y + min.y) / 2.0);
+	translate_2d(points, size, dx, dy);
 }
