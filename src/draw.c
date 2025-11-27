@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void	plot_line(mlx_image_t *img, t_point p0, t_point p1)
+static void	plot_line(mlx_image_t *img, t_point p0, t_point p1)
 {
 	int		dist[2];
 	double	coord[2];
@@ -59,12 +59,8 @@ static void	draw_lines(mlx_image_t *img, t_point *p, t_grid grid)
 
 void	draw_map(mlx_image_t *img, t_point *points, t_grid grid)
 {	
-	t_vector	scalar;
-
-	set_vector(&scalar, 20, 20, 3);
-	scale_transform(points, scalar, grid.size);
-	rotate_z_axis(points, 45, grid.size);
-	rotate_x_axis(points, 35.264389683, grid.size);
-	translate_2d(points, grid.size, 200, 200);
+	set_initial_scale(points, grid.size);
+	rotate_isometric(points, grid.size);
+	translate_to_center(points, grid.size);
 	draw_lines(img, points, grid);
 }
