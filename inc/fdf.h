@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/26 21:08:08 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/27 12:26:02 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <stdio.h>
 # include <limits.h>
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1600
+# define HEIGHT 900
 # define SPACE 10
 
 typedef struct s_point
