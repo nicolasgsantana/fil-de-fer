@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 10:19:26 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/24 10:15:07 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/27 16:17:46 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,4 @@ int	get_row_count(char *file)
 	}
 	close(fd);
 	return (count);
-}
-
-int	point_count(char *file)
-{
-	int	row_size;
-	int	column_size;
-
-	row_size = get_row_count(file);
-	column_size = get_col_count(file);
-	return (row_size * column_size);
 }
