@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 15:51:12 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/27 16:55:01 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/27 18:23:16 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static double	get_scale(t_point *p, int size)
 	t_vector	max;
 	double		scale_x;
 	double		scale_y;
-	
+
 	get_bounds(p, &min, &max, size);
 	scale_x = WIDTH * 0.8 / (max.x - min.x);
 	scale_y = HEIGHT * 0.8 / (max.y - min.y);

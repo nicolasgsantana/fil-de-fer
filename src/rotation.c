@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 15:49:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/27 16:13:37 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/27 18:23:25 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	rotate_x_axis(t_point *pts, double angle, int size)
 {
 	int		i;
 	double	rad;
-	double		y;
-	double		z;
+	double	y;
+	double	z;
 
 	rad = angle * (3.14159265358979323846 / 180);
 	i = 0;
@@ -35,8 +35,8 @@ void	rotate_y_axis(t_point *pts, double angle, int size)
 {
 	int		i;
 	double	rad;
-	double		x;
-	double		z;
+	double	x;
+	double	z;
 
 	rad = angle * (3.14159265358979323846 / 180);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/27 18:22:12 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/27 18:24:26 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@
 
 typedef struct s_point
 {
-	double				x;
-	double				y;
-	double				z;
+	double			x;
+	double			y;
+	double			z;
 	unsigned int	color;
 }					t_point;
 
@@ -53,7 +53,6 @@ typedef struct s_app
 	t_grid		grid;
 }				t_app;
 
-
 void			set_vector(t_vector *vector, double x, double y, double z);
 unsigned int	ft_htoui(char *hex);
 void			parse(char *file, t_point **points, t_grid *grid);
@@ -69,6 +68,6 @@ int				imax(int x, int y);
 int				get_col_count(char *file);
 void			set_grid(t_grid *grid, int cols, int rows);
 int				get_row_count(char *file);
-void			get_bounds(t_point *points, t_vector *min, t_vector *max, int size);
+void			get_bounds(t_point *p, t_vector *min, t_vector *max, int size);
 
 #endif
