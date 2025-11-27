@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/27 16:22:37 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/27 18:22:12 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,5 @@ int				get_col_count(char *file);
 void			set_grid(t_grid *grid, int cols, int rows);
 int				get_row_count(char *file);
 void			get_bounds(t_point *points, t_vector *min, t_vector *max, int size);
-
-// DEBUG ONLY REMOVE LATER
-void	print_map(t_point *points, t_grid grid);
 
 #endif
