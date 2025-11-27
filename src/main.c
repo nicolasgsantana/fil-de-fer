@@ -6,42 +6,37 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:40:59 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/24 12:59:37 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/26 21:54:36 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "error.h"
 
-static void ft_hook(void* param)
+static void	init_window(mlx_t **mlx, mlx_image_t **img)
 {
-	const mlx_t* mlx = param;
-	
-	(void)mlx;
-	// printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
+	mlx_set_setting(MLX_MAXIMIZED, true);
+	*mlx = mlx_init(WIDTH, HEIGHT, "Fil de Fer", false);
+	if (!(*mlx))
+		graphic_error();
+	*img = mlx_new_image(*mlx, WIDTH, HEIGHT);
+	if (!(*img) || (mlx_image_to_window(*mlx, *img, 0, 0) < 0))
+		graphic_error();
 }
 
 int32_t	main(int argc, char **argv)
 {
-	t_point		*points;
-	t_grid		grid;
-	mlx_t		*mlx;
-	mlx_image_t	*img;
+	t_app	app;
 
 	if (argc == 2)
 	{
-		parse(argv[1], &points, &grid);
-		mlx = mlx_init(WIDTH, HEIGHT, "Fil de Fer", false);
-		if (!mlx)
-			graphic_error();
-		img = mlx_new_image(mlx, WIDTH, HEIGHT);
-		if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
-			graphic_error();
-		mlx_loop_hook(mlx, ft_hook, mlx);
-		draw_map(img, points, grid);
-		mlx_loop(mlx);
-		mlx_terminate(mlx);
-		free(points);
+		app.initialized = 0;
+		parse(argv[1], &app.points, &app.grid);
+		init_window(&app.mlx, &app.img);
+		draw_map(app.img, app.points, app.grid);
+		mlx_loop(app.mlx);
+		mlx_terminate(app.mlx);
+		free(app.points);
 	}
 	return (EXIT_SUCCESS);
 }

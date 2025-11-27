@@ -6,7 +6,7 @@
 /*   By: nde-sant <nde-sant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:40 by nde-sant          #+#    #+#             */
-/*   Updated: 2025/11/24 12:59:37 by nde-sant         ###   ########.fr       */
+/*   Updated: 2025/11/26 21:08:08 by nde-sant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <stdio.h>
 # include <limits.h>
 
-# define WIDTH 720
-# define HEIGHT 720
+# define WIDTH 1920
+# define HEIGHT 1080
 # define SPACE 10
 
 typedef struct s_point
@@ -44,6 +44,16 @@ typedef struct s_grid
 	int	rows;
 	int	size;
 }		t_grid;
+
+typedef struct s_app
+{
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+	t_point		*points;
+	t_grid		grid;
+	int			initialized;
+}				t_app;
+
 
 void			set_vector(t_vector *vector, double x, double y, double z);
 unsigned int	ft_htoui(char *hex);
